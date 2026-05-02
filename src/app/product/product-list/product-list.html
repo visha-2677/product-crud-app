@@ -1,0 +1,30 @@
+
+<div class="d-flex justify-content-between mt-3 mb-3">
+    <h1>
+        {{title}}
+    </h1>
+    <p-button label="+ Add Item" class="me-3" (click)="onAddClick()" ></p-button>
+</div>
+<app-table
+    [title]="title"
+    [columnList]="columnList"
+    [dataList]="dataList"
+    [getLSListName]="'productList'"
+>
+</app-table>
+
+<ng-template #statusRef let-index="index" let-data="data"> 
+  <span class="badge text-white " [ngClass]="{
+    'bg-success ':data.status==='Available',
+    'bg-danger' : data.status==='Not Available'
+  }">
+    {{ data.status }}
+  </span>
+  
+</ng-template>
+
+<ng-template #actionRef let-index="index" let-data="data"> 
+  <i class="pi pi-pencil text-primary" (click)="onEdit(data)"></i>
+  <i class="pi pi-trash text-danger ms-3" (click)="onDelete(data)" ></i>
+  
+</ng-template>

@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+.form-control.in-valid{
+    border: 1px solid red !important;
+}
+.in-valid{
+    border: 1px solid red !important;
+} 
+.p-select {
+    display: flex !important;
+} 

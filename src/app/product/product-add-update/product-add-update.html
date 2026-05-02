@@ -1,0 +1,96 @@
+
+<div class="p-3">
+        
+    <div class="d-flex justify-content-between mt-3 mb-3">
+        <h1>
+            {{"Product Details"}}
+        </h1>
+        <div clas="d-flex gap-4">
+            <p-button label="Back" class="me-3" (click)="onBack()" ></p-button>
+            <p-button [label]="isUpdate ? 'Update':  'Save'" class="me-3  " (click)="onSubmit()" ></p-button>
+        </div>
+    </div>
+    <div class="row mt-3 mb-3" [formGroup]="form" >
+
+        <div class="col-md-4 col-sm-4 col-lg-4 form-group">
+            <label for="name">Name <span class="text-danger">*</span> </label>
+            <input type="input" formControlName="name" 
+            [(ngModel)]="data.name"
+            class="form-control" id="name"  placeholder="Enter Name"
+            [ngClass]="{'in-valid': (submitted && f.name.errors) ||  (f.name.errors && f.name.touched)}"
+            >
+            <div class="text-danger" *ngIf="(submitted && f.name.errors) ||  (f.name.errors && f.name.touched)" >
+                <span *ngIf="f.name.errors.required" >{{"This feild is required"}}</span>
+                <span *ngIf="f.name.errors.maxlength" >{{"Exceed max length of "+f.name.errors.maxlength.requiredLength }}</span>
+                <span *ngIf="f.name.errors.pattern" >{{"Enter valid name"}}</span>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-lg-4 form-group">
+            <label for="category">Category <span class="text-danger">*</span> </label>
+            <p-select [options]="categoryList" formControlName="category" [(ngModel)]="data.category" optionLabel="text" [showClear]="true"
+            optionValue="value" placeholder="Select Category" 
+            [ngClass]="{'in-valid': (submitted && f.category.errors) ||  (f.category.errors && f.category.touched)}"
+            />
+            <div class="text-danger" *ngIf="(submitted && f.category.errors) ||  (f.category.errors && f.category.touched)" >
+                <span *ngIf="f.category.errors.required" >{{"This feild is required"}}</span>
+                <span *ngIf="f.category.errors.maxlength" >{{"Exceed max length of "+f.category.errors.maxlength.requiredLength }}</span>
+                <span *ngIf="f.category.errors.pattern" >{{"Enter valid category"}}</span>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-4 col-lg-4 form-group">
+            <label for="currency">Currency <span class="text-danger">*</span> </label>
+            <p-select [options]="currencyList" formControlName="currency" [(ngModel)]="data.currency" optionLabel="text" [showClear]="true"
+            optionValue="value" placeholder="Select currency" 
+            [ngClass]="{'in-valid': (submitted && f.currency.errors) ||  (f.currency.errors && f.currency.touched)}"
+            />
+            <div class="text-danger" *ngIf="(submitted && f.currency.errors) ||  (f.currency.errors && f.currency.touched)" >
+                <span *ngIf="f.currency.errors.required" >{{"This feild is required"}}</span>
+                <span *ngIf="f.currency.errors.maxlength" >{{"Exceed max length of "+f.currency.errors.maxlength.requiredLength }}</span>
+                <span *ngIf="f.currency.errors.pattern" >{{"Enter valid currency"}}</span>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-lg-4 form-group">
+            <label for="price">Price <span class="text-danger">*</span> </label>
+            <input type="number" formControlName="price" 
+            [(ngModel)]="data.price"
+            class="form-control" id="price"  placeholder="Enter price"
+            [ngClass]="{'in-valid': (submitted && f.price.errors) ||  (f.price.errors && f.price.touched)}"
+            >
+            <div class="text-danger" *ngIf="(submitted && f.price.errors) ||  (f.price.errors && f.price.touched)" >
+                <span *ngIf="f.price.errors.required" >{{"This feild is required"}}</span>
+                <span *ngIf="f.price.errors.maxlength" >{{"Exceed max length of "+f.price.errors.maxlength.requiredLength }}</span>
+                <span *ngIf="f.price.errors.pattern" >{{"Enter valid price"}}</span>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-4 col-lg-4 form-group">
+            <label for="status">Status <span class="text-danger">*</span> </label>
+            <div class="d-flex gap-4">
+                <div class="flex items-center">
+                    <p-radiobutton name="status" value="Available" 
+                    formControlName="status"
+                    [(ngModel)]="data.status" inputId="ingredient1" />
+                    <label for="ingredient1" class="ms-2">Available</label>
+                </div>
+                <div class="flex items-center">
+                    <p-radiobutton name="status" value="Not Available" 
+                    formControlName="status"
+                    [(ngModel)]="data.status" inputId="ingredient2" />
+                    <label for="ingredient2" class="ms-2">Not Available</label>
+                </div>
+            </div>
+            <div class="text-danger" *ngIf="(submitted && f.status.errors) ||  (f.status.errors && f.status.touched)" >
+                <span *ngIf="f.status.errors.required" >{{"This feild is required"}}</span>
+                <span *ngIf="f.status.errors.maxlength" >{{"Exceed max length of "+f.status.errors.maxlength.requiredLength }}</span>
+                <span *ngIf="f.status.errors.pattern" >{{"Enter valid price"}}</span>
+            </div>
+        </div>
+        
+
+    </div>
+</div>

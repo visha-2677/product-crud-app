@@ -1,0 +1,57 @@
+<div>
+    <!-- <div>
+        <h1>
+            {{title}}
+        </h1>
+    </div> -->
+    <div>
+        <p-table [value]="dataList" [paginator]="true" [rows]="rows" [rowsPerPageOptions]="rowsPerPage">
+            <ng-template #header>
+                <tr>
+                    <ng-container *ngFor="let col of columnList">
+                        <th>
+                            {{col.header}}
+                        </th>
+                    </ng-container>
+                </tr>
+            </ng-template>
+            <ng-template #body let-item>
+                <tr>
+                <ng-container *ngFor="let col of columnList;let i=index;" >
+                    <ng-container [ngSwitch]="col.field">
+                        
+                        <!-- Serial Number -->
+                        <td *ngSwitchCase="'serialNumber'">
+                            {{item.id}}
+                        </td>
+
+                        
+                        <!-- Default -->
+                        <ng-container *ngSwitchDefault>
+                            <td *ngIf="!col?.customControls;else customControl">
+                                {{item[col.field]}}
+                            </td>
+                            <ng-template #customControl>
+                                <!-- Custom Template -->
+                                <td *ngIf="col.customControls">
+                                    <ng-container 
+                                    *ngTemplateOutlet="
+                                        col.customControls[0];
+                                        context: { index: i, data: item }
+                                    ">
+                                    </ng-container>
+                                </td>
+                            </ng-template>
+                        </ng-container>
+                        
+                        
+                    </ng-container>
+                       
+                        
+                    </ng-container>
+                </tr>
+
+            </ng-template>
+        </p-table>
+    </div>
+</div>
