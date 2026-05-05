@@ -30,6 +30,7 @@ export class ProductList implements OnInit,AfterViewInit{
     if(this.isLocalStorage){
       this.dataList=this.getItem('productList');
     }
+    
     this.getColumnList();
   }
 
