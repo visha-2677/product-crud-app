@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Table } from "../../core/table/table";
 import { ButtonModule } from 'primeng/button';
 import { Route, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { productModal } from '../modal/product.modal';
+import { environment } from '../../../assets/environment';
 
 @Component({
   selector: 'app-product-list',
@@ -17,13 +18,18 @@ export class ProductList implements OnInit,AfterViewInit{
   columnList:Array<any>=[];
   @ViewChild('statusRef',{static:false}) statusRef!:TemplateRef<any>;
   @ViewChild('actionRef',{static:false}) actionRef!:TemplateRef<any>;
+  @ViewChild(Table,{static:false}) private tableRef!:Table;
+  moduleName="products";
+  isLocalStorage:boolean=environment.ISLOCALSTORAGE;
 
   constructor(private route:Router) {
     
   }
 
   ngOnInit(): void {
-    this.dataList=this.getItem('productList');
+    if(this.isLocalStorage){
+      this.dataList=this.getItem('productList');
+    }
     this.getColumnList();
   }
 
@@ -77,7 +83,21 @@ export class ProductList implements OnInit,AfterViewInit{
     this.route.navigate(['products/add-update']);
   }
   onDelete(data:productModal){
-    
+    if(confirm("Are you sure delete this row")){
+      if(this.isLocalStorage){
+        console.log("data ",data.id);
+        console.log("data  1",this.dataList);
+
+        this.dataList= this.dataList.filter((item)=>item.id != data.id);
+        console.log("data 2 ",this.dataList);
+        
+
+        this.setItem("productList",this.dataList)
+      }
+      else{
+        this.tableRef.onDelete(data);
+      }
+    }
   }
   onEdit(data:productModal){
     this.route.navigate(['products/add-update',data.id])

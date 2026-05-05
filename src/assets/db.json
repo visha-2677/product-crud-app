@@ -1,0 +1,77 @@
+{
+  "products": [
+    {
+      "name": "Dell XPS 15",
+      "category": "Laptops",
+      "currency": "USD",
+      "price": 1799.99,
+      "status": "Available",
+      "id": "_oWSyL-w4Z8"
+    },
+    {
+      "name": "Mechanical Keyboard K8",
+      "category": "Accessories",
+      "currency": "USD",
+      "price": 129,
+      "status": "Available",
+      "id": "YAn1A1tkSYA"
+    },
+    {
+      "name": "GoPro Hero 12",
+      "category": "Cameras",
+      "currency": "USD",
+      "price": 399.99,
+      "status": "Not Available",
+      "id": "sBSaWD5opvk"
+    },
+    {
+      "name": "Apple Watch Series 9",
+      "category": "Wearables",
+      "currency": "USD",
+      "price": 499.99,
+      "status": "Available",
+      "id": "Bcj8Iwm9lt8"
+    },
+    {
+      "name": "Table",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 3029,
+      "status": "Available",
+      "id": "XkCw6q-xem8"
+    },
+    {
+      "name": "Table 1",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 3029,
+      "status": "Available",
+      "id": "HXiDbNPO40I"
+    },
+    {
+      "name": "Table 7777777777777",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 3029,
+      "status": "Not Available",
+      "id": "lAs4_6kWQp0"
+    },
+    {
+      "name": "Table 10",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 3029,
+      "status": "Available",
+      "id": "-Cq0rOhnwD4"
+    },
+    {
+      "name": "Table 15",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 3029,
+      "status": "Available",
+      "id": "76pKMh7W6IM"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

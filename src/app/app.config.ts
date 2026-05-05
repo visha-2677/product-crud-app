@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { definePreset } from '@primeuix/themes';
 import Aura from '@primeuix/themes/aura';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const MyPreset = definePreset(Aura, {
     semantic: {
@@ -29,6 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideAnimations(),
+    provideHttpClient(withInterceptorsFromDi()), 
     providePrimeNG({
             theme: {
                 preset: MyPreset,

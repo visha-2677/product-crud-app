@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AbstractAddUpdate } from '../../core/base/abstract-add-update';
 import { ButtonModule } from 'primeng/button';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -7,12 +7,14 @@ import { productModal } from '../modal/product.modal';
 import { CommonModule } from '@angular/common';
 import { SelectModule } from 'primeng/select';
 import { RadioButton } from 'primeng/radiobutton';
+import { environment } from '../../../assets/environment';
 
 @Component({
   selector: 'app-product-add-update',
   imports: [ButtonModule, ReactiveFormsModule, FormsModule,CommonModule,SelectModule,RadioButton],
   templateUrl: './product-add-update.html',
   styleUrl: './product-add-update.scss',
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ProductAddUpdate extends AbstractAddUpdate<any> implements OnInit {
 
@@ -39,11 +41,14 @@ export class ProductAddUpdate extends AbstractAddUpdate<any> implements OnInit {
       value:"US"
     }
   ]
+  override isLocalStorage=environment.ISLOCALSTORAGE;
+  override moduleName:string="products";
   
   constructor(
     private fb:FormBuilder,
     route: Router,
-    activeRoute:ActivatedRoute
+    activeRoute:ActivatedRoute,
+    private cdr:ChangeDetectorRef
   ){
     super(route,activeRoute);
     this.setValidation();
@@ -61,7 +66,7 @@ export class ProductAddUpdate extends AbstractAddUpdate<any> implements OnInit {
       currency:[null,[Validators.required]],
       price:[0,[Validators.required,Validators.maxLength(30)]],
       status:[null,[Validators.required]]
-    })
+    })  
   }
 
   getLSListName (){
@@ -82,6 +87,12 @@ export class ProductAddUpdate extends AbstractAddUpdate<any> implements OnInit {
 
   getData(){
     return this.data;
+  }
+
+  setData(data:any){
+    this.data = data;
+    console.log("set Data ",data)
+    this.cdr.detectChanges()
   }
 
 
