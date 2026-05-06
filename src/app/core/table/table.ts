@@ -4,6 +4,7 @@ import {  TableModule } from 'primeng/table';
 import { Crud } from '../service/crud';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../assets/environment';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-table',
   imports: [ TableModule , CommonModule],
@@ -23,7 +24,8 @@ export class Table implements OnInit {
 
   constructor(
     private crudSrv:Crud,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private msgSrv:MessageService
   ){
 
   }
@@ -71,6 +73,8 @@ export class Table implements OnInit {
   onDelete(data:any){
     this.crudSrv.delete(this.moduleName,data.id).subscribe((res:any)=>{
       console.log("Successfully Delete this record")
+      this.msgSrv.add({ severity:"success",summary:"Success",detail:"Successfully Deleted Records" });
+
       this.ngOnInit();
     })
   }

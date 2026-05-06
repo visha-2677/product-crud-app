@@ -8,13 +8,15 @@ import { CommonModule } from '@angular/common';
 import { SelectModule } from 'primeng/select';
 import { RadioButton } from 'primeng/radiobutton';
 import { environment } from '../../../assets/environment';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-product-add-update',
-  imports: [ButtonModule, ReactiveFormsModule, FormsModule,CommonModule,SelectModule,RadioButton],
+  imports: [ButtonModule, ReactiveFormsModule, FormsModule,CommonModule,SelectModule,RadioButton,ToastModule],
   templateUrl: './product-add-update.html',
   styleUrl: './product-add-update.scss',
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection:ChangeDetectionStrategy.OnPush,
 })
 export class ProductAddUpdate extends AbstractAddUpdate<any> implements OnInit {
 
@@ -48,9 +50,10 @@ export class ProductAddUpdate extends AbstractAddUpdate<any> implements OnInit {
     private fb:FormBuilder,
     route: Router,
     activeRoute:ActivatedRoute,
-    private cdr:ChangeDetectorRef
+    msgSrv:MessageService,
+    private cdr:ChangeDetectorRef,
   ){
-    super(route,activeRoute);
+    super(route,activeRoute, msgSrv);
     this.setValidation();
   }
 
@@ -67,6 +70,7 @@ export class ProductAddUpdate extends AbstractAddUpdate<any> implements OnInit {
       price:[0,[Validators.required,Validators.maxLength(30)]],
       status:[null,[Validators.required]]
     })  
+    
   }
 
   getLSListName (){

@@ -5,6 +5,7 @@ import { Route, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { productModal } from '../modal/product.modal';
 import { environment } from '../../../assets/environment';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +23,7 @@ export class ProductList implements OnInit,AfterViewInit{
   moduleName="products";
   isLocalStorage:boolean=environment.ISLOCALSTORAGE;
 
-  constructor(private route:Router) {
+  constructor(private route:Router,private msgSrv:MessageService) {
     
   }
 
@@ -30,7 +31,6 @@ export class ProductList implements OnInit,AfterViewInit{
     if(this.isLocalStorage){
       this.dataList=this.getItem('productList');
     }
-    
     this.getColumnList();
   }
 
@@ -94,6 +94,7 @@ export class ProductList implements OnInit,AfterViewInit{
         
 
         this.setItem("productList",this.dataList)
+        this.msgSrv.add({ severity:"success",summary:"Success",detail:"Successfully Deleted Records" });
       }
       else{
         this.tableRef.onDelete(data);

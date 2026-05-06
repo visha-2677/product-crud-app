@@ -1,22 +1,6 @@
 {
   "products": [
     {
-      "name": "Dell XPS 15",
-      "category": "Laptops",
-      "currency": "USD",
-      "price": 1799.99,
-      "status": "Available",
-      "id": "_oWSyL-w4Z8"
-    },
-    {
-      "name": "Mechanical Keyboard K8",
-      "category": "Accessories",
-      "currency": "USD",
-      "price": 129,
-      "status": "Available",
-      "id": "YAn1A1tkSYA"
-    },
-    {
       "name": "GoPro Hero 12",
       "category": "Cameras",
       "currency": "USD",
@@ -71,6 +55,126 @@
       "price": 3029,
       "status": "Available",
       "id": "76pKMh7W6IM"
+    },
+    {
+      "name": "Table",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 1000,
+      "status": "Available",
+      "id": "bGlmy-hUhqM"
+    },
+    {
+      "name": "Vishal Vaishnav",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 10,
+      "status": "Available",
+      "id": "kBfAeX-5oxQ"
+    },
+    {
+      "name": "Antrix",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 23939,
+      "status": "Not Available",
+      "id": "diWAk7xuArM"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "US",
+      "price": 322322,
+      "status": "Not Available",
+      "id": "zI9kgBY4LiU"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "US",
+      "price": 322322,
+      "status": "Not Available",
+      "id": "i08OI3loH2A"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "US",
+      "price": 322322,
+      "status": "Not Available",
+      "id": "S8HI51a4n5I"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 323232,
+      "status": "Available",
+      "id": "VrwHuM8Cab4"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 323232,
+      "status": "Available",
+      "id": "OS9HyI7Zlk0"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 323232,
+      "status": "Available",
+      "id": "L05YdbNTBOQ"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 323232,
+      "status": "Available",
+      "id": "cGtDw2Z46Ak"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 323232,
+      "status": "Available",
+      "id": "lo1JomeSkOQ"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 323332,
+      "status": "Not Available",
+      "id": "VmXUgQy-D4Q"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 323332,
+      "status": "Not Available",
+      "id": "CIw5P9nH3r8"
+    },
+    {
+      "name": "VISHAL VAISHNAV",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 12000000,
+      "status": "Not Available",
+      "id": "sSKSd1bckfE"
+    },
+    {
+      "name": "Rajesh",
+      "category": "Electrition",
+      "currency": "INR",
+      "price": 320909,
+      "status": "Available",
+      "id": "6JFASBWTOR4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

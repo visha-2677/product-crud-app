@@ -2,6 +2,7 @@ import { Directive, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Crud } from '../service/crud';
 import { environment } from '../../../assets/environment';
+import { MessageService } from 'primeng/api';
 
 @Directive()
 export abstract class AbstractAddUpdate<T>  {
@@ -16,7 +17,8 @@ export abstract class AbstractAddUpdate<T>  {
 
   constructor(
     protected route:Router,
-    protected activeRoute:ActivatedRoute
+    protected activeRoute:ActivatedRoute,
+    protected msgSrv:MessageService
   ) { }
 
   abstract getLSListName():string ;
@@ -27,7 +29,6 @@ export abstract class AbstractAddUpdate<T>  {
   init(){
     this.id=this.activeRoute.snapshot.paramMap.get('id');
     if(this.isLocalStorage){
-      console.log("thisdata ",this.data)
       // ===> LS
       if(this.getLSListName()){
         this.dataList= this.getItem(this.getLSListName());
@@ -51,7 +52,6 @@ export abstract class AbstractAddUpdate<T>  {
          this.isUpdate=true;
          this.crudSrv.getData(this.moduleName,this.id).subscribe({
           next:(res:any)=>{
-            console.log("data of get ",res);
             this.data=res;
             this.setData(this.data);
           }
@@ -65,7 +65,6 @@ export abstract class AbstractAddUpdate<T>  {
   onSubmitData(){ 
     if(this.isLocalStorage){
       if(this.isUpdate){
-        console.log("isUpdate")
         this.dataList=this.getItem(this.getLSListName());
         this.dataList= this.dataList.map((item)=>{
           if(item.id==this.data.id){
@@ -75,6 +74,8 @@ export abstract class AbstractAddUpdate<T>  {
         })
         console.log("data ",this.data)
         console.log("data ",this.data)
+        this.msgSrv.add({ severity:"success",summary:"Success",detail:"Updated Successfully" });
+
       }
       else{
         this.data=this.getData();
@@ -86,6 +87,8 @@ export abstract class AbstractAddUpdate<T>  {
           this.data.id=this.dataList.length+1;
         }
         this.dataList.push(this.data);
+        this.msgSrv.add({ severity:"success",summary:"Success",detail:"Saved Successfully" })
+
       }
       this.setItem(this.getLSListName(),this.dataList);
     }
@@ -93,7 +96,8 @@ export abstract class AbstractAddUpdate<T>  {
       if(this.isUpdate){
         this.crudSrv.update(this.moduleName,this.getData()).subscribe({
           next:(res:any)=>{
-            console.log("Updated successfully ",res);
+            this.msgSrv.add({ severity:"success",summary:"Success",detail:"Updated Successfully" });
+
           }
         })
       }
@@ -101,9 +105,13 @@ export abstract class AbstractAddUpdate<T>  {
         this.crudSrv.create(this.moduleName,this.getData()).subscribe({
           next:(res:any)=>{
             console.log("Saved successfully ",res);
+            this.msgSrv.add({ severity:"success",summary:"Success",detail:"Saved Successfully" })
+
           }
         })
       }
+
+
       
     }
 
